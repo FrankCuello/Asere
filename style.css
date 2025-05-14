@@ -1,0 +1,107 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #00001a; /* Un azul oscuro espacial */
+    color: #00ff00; /* Verde neón típico */
+}
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Detrás de todo */
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Para que el z-index de los hijos funcione bien */
+}
+
+.message-box {
+    background-color: rgba(10, 10, 30, 0.85); /* Fondo de caja semitransparente */
+    border: 3px solid #ff00ff; /* Borde magenta neón */
+    padding: 30px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, inset 0 0 10px #00ffff;
+    max-width: 800px;
+    animation: fadeInBox 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInBox {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.message-box h1 {
+    font-size: 2em;
+    color: #ffff00; /* Amarillo brillante */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #ff00ff; /* Sombra para efecto 3D */
+    min-height: 1.2em; /* Para evitar saltos mientras se escribe */
+}
+
+.message-box p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: #00ff00; /* Verde neón */
+    margin-bottom: 25px;
+    min-height: 3.6em; /* Para evitar saltos mientras se escribe (aprox 2 líneas) */
+}
+
+.message-box .signature {
+    font-size: 0.8em;
+    color: #00ffff; /* Cyan neón */
+    margin-top: 30px;
+}
+
+.hearts {
+    margin-top: 20px;
+}
+
+.hearts span {
+    font-size: 2em;
+    margin: 0 10px;
+    display: inline-block;
+    animation: pulseHeart 1.5s infinite ease-in-out;
+}
+
+.hearts span:nth-child(1) { animation-delay: 0s; }
+.hearts span:nth-child(2) { animation-delay: 0.3s; }
+.hearts span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes pulseHeart {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* Para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .message-box h1 {
+        font-size: 1.5em;
+    }
+    .message-box p {
+        font-size: 0.9em;
+    }
+    .message-box {
+        padding: 20px;
+    }
+}
